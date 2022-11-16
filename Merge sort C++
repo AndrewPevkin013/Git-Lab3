@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+void merge(int i, int j, int a[], int x[]) {
+    if (j <= i) {
+        return;
+    }
+    int middle = (i + j) / 2;
+
+    merge(i, middle, a, x);
+    merge(middle + 1, j, a, x);
+
+    int left = i;
+    int right = middle + 1;
+    int k;
+
+    for (k = i; k <= j; k++) {
+        if (left == middle + 1) {
+            x[k] = a[right];
+            right++;
+        }
+        else if (right == j + 1) {
+            x[k] = a[left];
+            left++;
+        }
+        else if (a[left] < a[right]) {
+            x[k] = a[left];
+            left++;
+        }
+        else {
+            x[k] = a[right];
+            right++;
+        }
+    }
+    for (k = i; k <= j; k++) {
+        a[k] = x[k];
+    }
+}
+
+
+int main() {
+    int a[100001], x[100001], n, i;
+
+    cin >> n;
+    for (i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    merge(0, n - 1, a, x);
+
+    for (i = 0; i < n; i++) {
+        cout << a[i] << ' ';
+    }
+
+    return 0;
+}
+
