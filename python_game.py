@@ -1,6 +1,4 @@
 import random
-
-
 def create_field():
     field = [
         [".", ".", ".", ".", "."],
@@ -10,15 +8,11 @@ def create_field():
         [".", ".", ".", ".", "."],
     ]
     return field
-
-
 def draw_field(field):
     for i in range(5):
         for j in range(5):
             print(field[i][j], end=' ')
-        print()
-
-
+        print(" ")
 def place_ship(field):
     orientation = random.randint(1, 2)
     if orientation == 1:
@@ -28,7 +22,6 @@ def place_ship(field):
 
         for i in range(column, column + 3):
             field[row][i] = "O"
-
     else:
         # Располагаем корабль вертикально
         row = random.randint(0, 2)
