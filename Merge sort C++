@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 void merge(int i, int j, int a[], int x[]) {
